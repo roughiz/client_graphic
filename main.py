@@ -24,7 +24,7 @@ interface=Builder.load_string('''
         GridLayout:
             canvas.before:
                 Color:
-                    rgba: 63, 191, 191, 1 #jaune
+                    rgba: 61, 238, 248, 1 #jaune
                 Rectangle:
                     pos: self.pos
                     size: self.size
