@@ -103,8 +103,8 @@ interface=Builder.load_string('''
 
 class Interface(BoxLayout):
 
-    grille = [['vide', 'vide', 'vide'] for k in range(3)]
-    boutons = [[0,0,0] for k in range(3)]
+    grille = [['vide', 'vide', 'vide'] for k in range(4)]
+    boutons = [[0,0,0] for k in range(4)]
     qui_commence = randint(0, 1)
     jeu_en_cours = False
     a_qui_le_tour = ""
@@ -128,7 +128,7 @@ class Interface(BoxLayout):
 
     def nouveau_jeu(self):
         # Reinitialisation de la grille
-        self.grille = [['vide', 'vide', 'vide'] for k in range(3)]
+        self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
         for item in self.boutons:
             for b in item:
                 b.background_normal = "images/orange.png"
