@@ -28,7 +28,7 @@ interface=Builder.load_string('''
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            rows: 3
+            rows: 4
             cols: 3
             spacing: 20
             padding: 20
