@@ -59,6 +59,15 @@ interface=Builder.load_string('''
             Bouton:
                 id: bouton_3_3
                 on_press: root.joue(self, 3, 3)
+	    Bouton:
+                id: bouton_4_1
+                on_press: root.joue(self, 4, 1)
+            Bouton:
+                id: bouton_4_2
+                on_press: root.joue(self, 4, 2)
+            Bouton:
+                id: bouton_4_3
+                on_press: root.joue(self, 4, 3)
         BoxLayout:
             canvas.before:
                 Color:
@@ -112,6 +121,9 @@ class Interface(BoxLayout):
         self.boutons[2][0] = self.ids.bouton_3_1
         self.boutons[2][1] = self.ids.bouton_3_2
         self.boutons[2][2] = self.ids.bouton_3_3
+        self.boutons[3][0] = self.ids.bouton_4_1
+        self.boutons[3][1] = self.ids.bouton_4_2
+        self.boutons[3][2] = self.ids.bouton_4_3
         event = Clock.schedule_interval(self.joue_machine, 2)
 
     def nouveau_jeu(self):
