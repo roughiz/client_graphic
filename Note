@@ -1,0 +1,8 @@
+L'interface graphique propose un (user/password) form pur s'authentifier(jouer)
+il y'aura aussi un bouton créeun compte qui renvoi versun form avec des champs
+une fois l'authntifiaction est bonne le jeu commence
+à chaquefois que le joeur joue ou le serveur on rafrichie l'interface sccreen
+
+de mon coté tous les appels vers authentfication création de compte jouer etc seront des fonctions client(donc que vous allez crée et que je dois moi de mont coté simplement les appeles) vos intéractions avec les seveur protocoles etc ne concerne pas mon travail, pensez donc à crée toutes les fonctions q'il faut ( faites des getter setter si il le faut etc) pensez API !!!!!
+
+
