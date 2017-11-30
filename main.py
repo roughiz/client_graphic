@@ -14,7 +14,7 @@ interface=Builder.load_string('''
     BoxLayout:
         canvas.before:
             Color:
-                rgba: 0.55, 0.86, 0, 1 #vert
+                rgba: 63, 127, 191, 1 #vert
             Rectangle:
                 pos: self.pos
                 size: self.size
