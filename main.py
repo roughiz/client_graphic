@@ -14,7 +14,7 @@ interface=Builder.load_string('''
     BoxLayout:
         canvas.before:
             Color:
-                rgba: 0.63, 0.127, 0.191, 1 #vert
+                rgba: 63, 63, 191, 1 #vert
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -24,14 +24,14 @@ interface=Builder.load_string('''
         GridLayout:
             canvas.before:
                 Color:
-                    rgb: 0, 0,749, 1 #jaune
+                    rgb: 0, 0,74, 0,62 #jaune
                 Rectangle:
                     pos: self.pos
                     size: self.size
             rows: 4
             cols: 3
-            spacing: 4
-            padding: 4
+            spacing: 2
+            padding: 2
             Bouton:
                 id: bouton_1_1
                 on_press: root.joue(self, 1, 1)
