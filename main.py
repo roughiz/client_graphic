@@ -30,8 +30,8 @@ interface=Builder.load_string('''
                     size: self.size
             rows: 4
             cols: 3
-            spacing: 20
-            padding: 20
+            spacing: 10
+            padding: 10
             Bouton:
                 id: bouton_1_1
                 on_press: root.joue(self, 1, 1)
