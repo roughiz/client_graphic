@@ -19,19 +19,19 @@ interface=Builder.load_string('''
                 pos: self.pos
                 size: self.size
         orientation: 'horizontal' if root.height < root.width else "vertical"
-        padding: 20
-        spacing: 20
+        padding: 10
+        spacing: 10
         GridLayout:
             canvas.before:
                 Color:
-                    rgba: 0, 0,749, 1, 1 #jaune
+                    rgb: 0, 0,749, 1 #jaune
                 Rectangle:
                     pos: self.pos
                     size: self.size
             rows: 4
             cols: 3
-            spacing: 10
-            padding: 10
+            spacing: 4
+            padding: 4
             Bouton:
                 id: bouton_1_1
                 on_press: root.joue(self, 1, 1)
