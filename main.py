@@ -59,7 +59,7 @@ interface=Builder.load_string('''
             Bouton:
                 id: bouton_3_3
                 on_press: root.joue(self, 3, 3)
-	    Bouton:
+	    	Bouton:
                 id: bouton_4_1
                 on_press: root.joue(self, 4, 1)
             Bouton:
@@ -151,7 +151,7 @@ class Interface(BoxLayout):
         if self.a_qui_le_tour == "rond" and self.jeu_en_cours:
             fini = False
             while not fini :
-                ligne = randint(0,2)
+                ligne = randint(0,3)
                 colonne = randint(0,2)
                 if self.grille[ligne][colonne] == "vide":
                     self.grille[ligne][colonne] = "rond"
