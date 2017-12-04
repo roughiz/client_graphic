@@ -196,28 +196,27 @@ interface = Builder.load_string('''
 
 class Interface(BoxLayout):
 
-    BOARDWIDTH = 7
-    BOARDHEIGHT = 6
-    ROND = "images/rond.png"
-    CROIX = "images/croix.png"
-    #grille = [['vide', 'vide', 'vide'] for k in range(4)]
-    bord = []
-    boutons = []
+    def __init__(self):
+        super(Interface, self).__init__()
+        self.ids.message.text = ""
+        self.BOARDWIDTH = 7
+        self.BOARDHEIGHT = 6
+        self.ROND = "images/rond.png"
+        self.CROIX = "images/croix.png"
+        #grille = [['vide', 'vide', 'vide'] for k in range(4)]
+        self.bord = []
+        self.boutons = []
 
     qui_commence = randint(0, 1)
     jeu_en_cours = False
     a_qui_le_tour = ""
 
-    def __init__(self):
-        super(Interface, self).__init__()
-        self.ids.message.text = ""
-
-        # Reinitialisation de la grille
-        # We construct our table with empty cases
-        for x in range(BOARDWIDTH):
-            self.board.append([' '] * BOARDHEIGHT)
-        for x in range(BOARDWIDTH):
-            self.boutons.append([0] * BOARDHEIGHT)
+    # Reinitialisation de la grille
+    # We construct our table with empty cases
+        for x in range(self.BOARDWIDTH):
+            self.board.append([' '] * self.BOARDHEIGHT)
+        for x in range(self.BOARDWIDTH):
+            self.boutons.append([0] * self.BOARDHEIGHT)
 
         # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
