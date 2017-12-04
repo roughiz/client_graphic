@@ -6,6 +6,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 from random import randint
 
+
+
 interface=Builder.load_string('''
 <Bouton@Button>:
     background_normal: "images/orange.png"
@@ -28,8 +30,8 @@ interface=Builder.load_string('''
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            rows: 4
-            cols: 3
+            rows: 6
+            cols: 7
             spacing: 4
             padding: 4
             Bouton:
@@ -42,6 +44,18 @@ interface=Builder.load_string('''
                 id: bouton_1_3
                 on_press: root.joue(self, 1, 3)
             Bouton:
+                id: bouton_1_4
+                on_press: root.joue(self, 1, 4)
+            Bouton:
+                id: bouton_1_5
+                on_press: root.joue(self, 1, 5)
+            Bouton:
+                id: bouton_1_6
+                on_press: root.joue(self, 1, 6)                
+            Bouton:
+                id: bouton_1_7
+                on_press: root.joue(self, 1, 7)
+			Bouton:
                 id: bouton_2_1
                 on_press: root.joue(self, 2, 1)
             Bouton:
@@ -51,6 +65,18 @@ interface=Builder.load_string('''
                 id: bouton_2_3
                 on_press: root.joue(self, 2, 3)
             Bouton:
+                id: bouton_2_4
+                on_press: root.joue(self, 2, 4)
+            Bouton:
+                id: bouton_2_5
+                on_press: root.joue(self, 2, 5)
+            Bouton:
+                id: bouton_2_6
+                on_press: root.joue(self, 2, 6)                
+            Bouton:
+                id: bouton_2_7
+                on_press: root.joue(self, 2, 7)
+            Bouton:
                 id: bouton_3_1
                 on_press: root.joue(self, 3, 1)
             Bouton:
@@ -59,7 +85,19 @@ interface=Builder.load_string('''
             Bouton:
                 id: bouton_3_3
                 on_press: root.joue(self, 3, 3)
-	    	Bouton:
+            Bouton:
+                id: bouton_3_4
+                on_press: root.joue(self, 3, 4)
+            Bouton:
+                id: bouton_3_5
+                on_press: root.joue(self, 3, 5)
+            Bouton:
+                id: bouton_3_6
+                on_press: root.joue(self, 3, 6)                
+            Bouton:
+                id: bouton_3_7
+                on_press: root.joue(self, 3, 7)
+            Bouton:
                 id: bouton_4_1
                 on_press: root.joue(self, 4, 1)
             Bouton:
@@ -68,6 +106,61 @@ interface=Builder.load_string('''
             Bouton:
                 id: bouton_4_3
                 on_press: root.joue(self, 4, 3)
+            Bouton:
+                id: bouton_4_4
+                on_press: root.joue(self, 4, 4)
+            Bouton:
+                id: bouton_4_5
+                on_press: root.joue(self, 4, 5)
+            Bouton:
+                id: bouton_4_6
+                on_press: root.joue(self, 4, 6)                
+            Bouton:
+                id: bouton_4_7
+                on_press: root.joue(self, 4, 7)
+            Bouton:
+                id: bouton_5_1
+                on_press: root.joue(self, 5, 1)
+            Bouton:
+                id: bouton_5_2
+                on_press: root.joue(self, 5, 2)
+            Bouton:
+                id: bouton_5_3
+                on_press: root.joue(self, 5, 3)
+            Bouton:
+                id: bouton_5_4
+                on_press: root.joue(self, 5, 4)
+            Bouton:
+                id: bouton_5_5
+                on_press: root.joue(self, 5, 5)
+            Bouton:
+                id: bouton_5_6
+                on_press: root.joue(self, 5, 6)                
+            Bouton:
+                id: bouton_5_7
+                on_press: root.joue(self, 5, 7)
+            Bouton:
+                id: bouton_6_1
+                on_press: root.joue(self, 6, 1)
+            Bouton:
+                id: bouton_6_2
+                on_press: root.joue(self, 6, 2)
+            Bouton:
+                id: bouton_6_3
+                on_press: root.joue(self, 6, 3)
+            Bouton:
+                id: bouton_6_4
+                on_press: root.joue(self, 6, 4)
+            Bouton:
+                id: bouton_6_5
+                on_press: root.joue(self, 6, 5)
+            Bouton:
+                id: bouton_6_6
+                on_press: root.joue(self, 6, 6)                
+            Bouton:
+                id: bouton_6_7
+                on_press: root.joue(self, 6, 7)
+
         BoxLayout:
             canvas.before:
                 Color:
@@ -98,13 +191,20 @@ interface=Builder.load_string('''
                 text: 'Nouveau jeu'
                 font_size: max(self.height, self.width) / 8
                 size_hint_y: 0.25
-                on_press: root.nouveau_jeu()
+                on_press: root.initialisation()
 ''')
 
 class Interface(BoxLayout):
 
-    grille = [['vide', 'vide', 'vide'] for k in range(4)]
-    boutons = [[0,0,0] for k in range(4)]
+	BOARDWIDTH = 7
+	BOARDHEIGHT = 6
+	ROND = "images/rond.png"
+	CROIX = "images/croix.png"
+
+    #grille = [['vide', 'vide', 'vide'] for k in range(4)]
+    bord = []
+    boutons = []
+
     qui_commence = randint(0, 1)
     jeu_en_cours = False
     a_qui_le_tour = ""
@@ -112,23 +212,67 @@ class Interface(BoxLayout):
     def __init__(self):
         super(Interface, self).__init__()
         self.ids.message.text = ""
+        # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
-        self.boutons[0][1] = self.ids.bouton_1_2
-        self.boutons[0][2] = self.ids.bouton_1_3
-        self.boutons[1][0] = self.ids.bouton_2_1
+        self.boutons[1][0] = self.ids.bouton_1_2
+        self.boutons[2][0] = self.ids.bouton_1_3
+        self.boutons[3][0] = self.ids.bouton_1_4
+        self.boutons[4][0] = self.ids.bouton_1_5
+        self.boutons[5][0] = self.ids.bouton_1_6
+		self.boutons[6][0] = self.ids.bouton_1_7
+
+		self.boutons[0][1] = self.ids.bouton_2_1
         self.boutons[1][1] = self.ids.bouton_2_2
-        self.boutons[1][2] = self.ids.bouton_2_3
-        self.boutons[2][0] = self.ids.bouton_3_1
-        self.boutons[2][1] = self.ids.bouton_3_2
+        self.boutons[2][1] = self.ids.bouton_2_3
+        self.boutons[3][1] = self.ids.bouton_2_4
+        self.boutons[4][1] = self.ids.bouton_2_5
+        self.boutons[5][1] = self.ids.bouton_2_6
+		self.boutons[6][1] = self.ids.bouton_2_7	
+
+		self.boutons[0][2] = self.ids.bouton_3_1
+        self.boutons[1][2] = self.ids.bouton_3_2
         self.boutons[2][2] = self.ids.bouton_3_3
-        self.boutons[3][0] = self.ids.bouton_4_1
-        self.boutons[3][1] = self.ids.bouton_4_2
-        self.boutons[3][2] = self.ids.bouton_4_3
+        self.boutons[3][2] = self.ids.bouton_3_4
+        self.boutons[4][2] = self.ids.bouton_3_5
+        self.boutons[5][2] = self.ids.bouton_3_6
+		self.boutons[6][2] = self.ids.bouton_3_7
+
+		self.boutons[0][3] = self.ids.bouton_4_1
+        self.boutons[1][3] = self.ids.bouton_4_2
+        self.boutons[2][3] = self.ids.bouton_4_3
+        self.boutons[3][3] = self.ids.bouton_4_4
+        self.boutons[4][3] = self.ids.bouton_4_5
+        self.boutons[5][3] = self.ids.bouton_4_6
+		self.boutons[6][3] = self.ids.bouton_4_7
+
+		self.boutons[0][4] = self.ids.bouton_5_1
+        self.boutons[1][4] = self.ids.bouton_5_2
+        self.boutons[2][4] = self.ids.bouton_5_3
+        self.boutons[3][4] = self.ids.bouton_5_4
+        self.boutons[4][4] = self.ids.bouton_5_5
+        self.boutons[5][4] = self.ids.bouton_5_6
+		self.boutons[6][4] = self.ids.bouton_5_7
+
+		self.boutons[0][5] = self.ids.bouton_6_1
+        self.boutons[1][5] = self.ids.bouton_6_2
+        self.boutons[2][5] = self.ids.bouton_6_3
+        self.boutons[3][5] = self.ids.bouton_6_4
+        self.boutons[4][5] = self.ids.bouton_6_5
+        self.boutons[5][5] = self.ids.bouton_6_6
+		self.boutons[6][5] = self.ids.bouton_6_7
+
+
         event = Clock.schedule_interval(self.joue_machine, 2)
 
-    def nouveau_jeu(self):
+    def initialisation(self):
         # Reinitialisation de la grille
-        self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
+   		# We construct our table with empty cases 
+    	for x in range(BOARDWIDTH):
+        	self.board.append([' '] * BOARDHEIGHT)
+        for x in range(BOARDWIDTH):
+        	self.boutons.append([0] * BOARDHEIGHT) 	
+
+        #self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
         for item in self.boutons:
             for b in item:
                 b.background_normal = "images/orange.png"
@@ -151,11 +295,11 @@ class Interface(BoxLayout):
         if self.a_qui_le_tour == "rond" and self.jeu_en_cours:
             fini = False
             while not fini :
-                ligne = randint(0,3)
-                colonne = randint(0,2)
-                if self.grille[ligne][colonne] == "vide":
-                    self.grille[ligne][colonne] = "rond"
-                    self.boutons[ligne][colonne].background_normal = "images/rond.png"
+                ligne = randint(0,5)
+                colonne = randint(0,6)
+                if self.grille[colonne][ligne] == "vide":
+                    self.grille[colonne][ligne] = "rond"
+                    self.boutons[colonne][ligne].background_normal = "images/rond.png"
                     fini = True
             if not self.verifie_gagne():
                 self.a_qui_le_tour = "croix"
@@ -163,9 +307,9 @@ class Interface(BoxLayout):
 
     def joue(self, wid, x, y):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
-            if self.grille[x-1][y-1] == "vide":
+            if self.grille[y-1][x-1] == "vide":
                 wid.background_normal = "images/croix.png"
-                self.grille[x-1][y-1] = "croix"
+                self.grille[y-1][x-1] = "croix"
                 self.a_qui_le_tour = "rond"
                 self.verifie_gagne()
 
