@@ -296,7 +296,7 @@ class Interface(BoxLayout):
             while not fini:
                 ligne = randint(0, 5)
                 colonne = randint(0, 6)
-                if self.board[colonne][ligne] == "vide":
+                if self.board[colonne][ligne] == " ":
                     self.board[colonne][ligne] = "rond"
                     self.boutons[colonne][ligne].background_normal = "images/rond.png"
                     fini = True
