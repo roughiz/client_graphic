@@ -203,7 +203,7 @@ class Interface(BoxLayout):
         self.BOARDHEIGHT = 6
         self.ROND = "images/rond.png"
         self.CROIX = "images/croix.png"
-        #board = [['vide', 'vide', 'vide'] for k in range(4)]
+        #board = [[' ', ' ', ' '] for k in range(4)]
         self.board = []
         self.boutons = []
 
@@ -271,7 +271,7 @@ class Interface(BoxLayout):
 
     def initialisation(self):
 
-        #self.board = [['vide', 'vide', 'vide'] for k in range(4)]
+        #self.board = [[' ', ' ', ' '] for k in range(4)]
         for item in self.boutons:
             for b in item:
                 b.background_normal = "images/orange.png"
@@ -307,6 +307,7 @@ class Interface(BoxLayout):
     def joue(self, wid, x, y):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
             if self.board[y - 1][x - 1] == " ":
+            	print("ligne"+x+"colonne:"+y)
                 wid.background_normal = "images/croix.png"
                 self.board[y - 1][x - 1] = "croix"
                 self.a_qui_le_tour = "rond"
@@ -316,30 +317,30 @@ class Interface(BoxLayout):
         gagne = False
         gagnant = None
         # Verifications horizontales
-        if self.board[0][0] == self.board[0][1] and self.board[0][0] == self.board[0][2] and self.board[0][0] != "vide":
+        if self.board[0][0] == self.board[0][1] and self.board[0][0] == self.board[0][2] and self.board[0][0] != " ":
             gagnant = self.board[0][0]
             gagne = True
-        elif self.board[1][0] == self.board[1][1] and self.board[1][0] == self.board[1][2] and self.board[1][0] != "vide":
+        elif self.board[1][0] == self.board[1][1] and self.board[1][0] == self.board[1][2] and self.board[1][0] != " ":
             gagnant = self.board[1][0]
             gagne = True
-        elif self.board[2][0] == self.board[2][1] and self.board[2][0] == self.board[2][2] and self.board[2][0] != "vide":
+        elif self.board[2][0] == self.board[2][1] and self.board[2][0] == self.board[2][2] and self.board[2][0] != " ":
             gagnant = self.board[2][0]
             gagne = True
         # Verifications verticales
-        elif self.board[0][0] == self.board[1][0] and self.board[0][0] == self.board[2][0] and self.board[0][0] != "vide":
+        elif self.board[0][0] == self.board[1][0] and self.board[0][0] == self.board[2][0] and self.board[0][0] != " ":
             gagnant = self.board[0][0]
             gagne = True
-        elif self.board[0][1] == self.board[1][1] and self.board[0][1] == self.board[2][1] and self.board[0][1] != "vide":
+        elif self.board[0][1] == self.board[1][1] and self.board[0][1] == self.board[2][1] and self.board[0][1] != " ":
             gagnant = self.board[0][1]
             gagne = True
-        elif self.board[0][2] == self.board[1][2] and self.board[0][2] == self.board[2][2] and self.board[0][2] != "vide":
+        elif self.board[0][2] == self.board[1][2] and self.board[0][2] == self.board[2][2] and self.board[0][2] != " ":
             gagnant = self.board[0][2]
             gagne = True
         # Verifications diagonales
-        elif self.board[0][0] == self.board[1][1] and self.board[0][0] == self.board[2][2] and self.board[0][0] != "vide":
+        elif self.board[0][0] == self.board[1][1] and self.board[0][0] == self.board[2][2] and self.board[0][0] != " ":
             gagnant = self.board[0][0]
             gagne = True
-        elif self.board[0][2] == self.board[1][1] and self.board[0][2] == self.board[2][0] and self.board[0][2] != "vide":
+        elif self.board[0][2] == self.board[1][1] and self.board[0][2] == self.board[2][0] and self.board[0][2] != " ":
             gagnant = self.board[0][2]
             gagne = True
         if gagne:
