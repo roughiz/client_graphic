@@ -190,7 +190,7 @@ interface = Builder.load_string('''
                 text: 'Nouveau jeu'
                 font_size: max(self.height, self.width) / 8
                 size_hint_y: 0.25
-                on_press: root.initialisation()
+                on_press: root.start_game()
 ''')
 
 
@@ -198,26 +198,40 @@ class Interface(BoxLayout):
 
     def __init__(self):
         super(Interface, self).__init__()
-        self.ids.message.text = ""
+        
         self.BOARDWIDTH = 7
         self.BOARDHEIGHT = 6
         self.ROND = "images/rond.png"
         self.CROIX = "images/croix.png"
-        #board = [[' ', ' ', ' '] for k in range(4)]
         self.board = []
         self.boutons = []
-
+        self.ids.message.text = ""
         self.qui_commence = randint(0, 1)
         self.jeu_en_cours = False
         self.a_qui_le_tour = ""
 
+
+        # Initialisation
+        self.initialisation()
+
+        
+
+        event = Clock.schedule_interval(self.joue_machine, 2)
+
+    def initialisation(self):
+
+    	self.qui_commence = randint(0, 1)
+        self.jeu_en_cours = False
+        self.a_qui_le_tour = ""
+        self.ids.message.text = ""
+    	self.board = []
+        self.boutons = []
         # Reinitialisation de la board
         # We construct our table with empty cases
         for x in range(self.BOARDWIDTH):
     	     self.board.append([' '] * self.BOARDHEIGHT)
         for x in range(self.BOARDWIDTH):
              self.boutons.append([0] * self.BOARDHEIGHT)
-
         # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
         self.boutons[1][0] = self.ids.bouton_1_2
@@ -267,10 +281,9 @@ class Interface(BoxLayout):
         self.boutons[5][5] = self.ids.bouton_6_6
         self.boutons[6][5] = self.ids.bouton_6_7
 
-        event = Clock.schedule_interval(self.joue_machine, 2)
+    def start_game(self):
 
-    def initialisation(self):
-
+        self.initialisation()
         #self.board = [[' ', ' ', ' '] for k in range(4)]
         for item in self.boutons:
             for b in item:
