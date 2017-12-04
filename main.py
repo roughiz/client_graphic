@@ -204,7 +204,7 @@ class Interface(BoxLayout):
         self.ROND = "images/rond.png"
         self.CROIX = "images/croix.png"
         #grille = [['vide', 'vide', 'vide'] for k in range(4)]
-        self.bord = []
+        self.board = []
         self.boutons = []
 
         qui_commence = randint(0, 1)
