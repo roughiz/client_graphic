@@ -162,24 +162,6 @@ interface = Builder.load_string('''
         BoxLayout:
             canvas.before:
                 Color:
-                    rgba: 0, 1, 0, 1 #fuschia
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-            orientation: 'horizontal'
-            padding: 2  
-            TextInput:
-                id: login2
-                #text: root.textinputtext
-                text: "login"
-            TextInput:
-                id: pass3
-                #text: root.textinputtext
-                text: "pass"    
-
-        BoxLayout:
-            canvas.before:
-                Color:
                     rgba: 63, 63, 191, 1 #fuschia
                 Rectangle:
                     pos: self.pos
@@ -205,11 +187,14 @@ interface = Builder.load_string('''
             TextInput:
                 id: login
                 #text: root.textinputtext
-                text: "login"
+                hint_text: "login"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             TextInput:
                 id: pass
                 #text: root.textinputtext
-                text: "pass"    
+                hint_text: "password"   
+                password : True 
+
             Button:
                 background_normal: "images/violet_clair.png"
                 text: 'Nouveau jeu'
