@@ -1,4 +1,4 @@
-### Jeu de morpion
+# Jeu de morpion
 
 from kivy.lang import Builder
 from kivy.app import App
@@ -7,8 +7,7 @@ from kivy.clock import Clock
 from random import randint
 
 
-
-interface=Builder.load_string('''
+interface = Builder.load_string('''
 <Bouton@Button>:
     background_normal: "images/orange.png"
 
@@ -194,6 +193,7 @@ interface=Builder.load_string('''
                 on_press: root.initialisation()
 ''')
 
+
 class Interface(BoxLayout):
 
     BOARDWIDTH = 7
@@ -218,58 +218,57 @@ class Interface(BoxLayout):
         self.boutons[3][0] = self.ids.bouton_1_4
         self.boutons[4][0] = self.ids.bouton_1_5
         self.boutons[5][0] = self.ids.bouton_1_6
-		self.boutons[6][0] = self.ids.bouton_1_7
+        self.boutons[6][0] = self.ids.bouton_1_7
 
-		self.boutons[0][1] = self.ids.bouton_2_1
+        self.boutons[0][1] = self.ids.bouton_2_1
         self.boutons[1][1] = self.ids.bouton_2_2
         self.boutons[2][1] = self.ids.bouton_2_3
         self.boutons[3][1] = self.ids.bouton_2_4
         self.boutons[4][1] = self.ids.bouton_2_5
         self.boutons[5][1] = self.ids.bouton_2_6
-		self.boutons[6][1] = self.ids.bouton_2_7	
+        self.boutons[6][1] = self.ids.bouton_2_7
 
-		self.boutons[0][2] = self.ids.bouton_3_1
+        self.boutons[0][2] = self.ids.bouton_3_1
         self.boutons[1][2] = self.ids.bouton_3_2
         self.boutons[2][2] = self.ids.bouton_3_3
         self.boutons[3][2] = self.ids.bouton_3_4
         self.boutons[4][2] = self.ids.bouton_3_5
         self.boutons[5][2] = self.ids.bouton_3_6
-		self.boutons[6][2] = self.ids.bouton_3_7
+        self.boutons[6][2] = self.ids.bouton_3_7
 
-		self.boutons[0][3] = self.ids.bouton_4_1
+        self.boutons[0][3] = self.ids.bouton_4_1
         self.boutons[1][3] = self.ids.bouton_4_2
         self.boutons[2][3] = self.ids.bouton_4_3
         self.boutons[3][3] = self.ids.bouton_4_4
         self.boutons[4][3] = self.ids.bouton_4_5
         self.boutons[5][3] = self.ids.bouton_4_6
-		self.boutons[6][3] = self.ids.bouton_4_7
+        self.boutons[6][3] = self.ids.bouton_4_7
 
-		self.boutons[0][4] = self.ids.bouton_5_1
+        self.boutons[0][4] = self.ids.bouton_5_1
         self.boutons[1][4] = self.ids.bouton_5_2
         self.boutons[2][4] = self.ids.bouton_5_3
         self.boutons[3][4] = self.ids.bouton_5_4
         self.boutons[4][4] = self.ids.bouton_5_5
         self.boutons[5][4] = self.ids.bouton_5_6
-		self.boutons[6][4] = self.ids.bouton_5_7
+        self.boutons[6][4] = self.ids.bouton_5_7
 
-		self.boutons[0][5] = self.ids.bouton_6_1
+        self.boutons[0][5] = self.ids.bouton_6_1
         self.boutons[1][5] = self.ids.bouton_6_2
         self.boutons[2][5] = self.ids.bouton_6_3
         self.boutons[3][5] = self.ids.bouton_6_4
         self.boutons[4][5] = self.ids.bouton_6_5
         self.boutons[5][5] = self.ids.bouton_6_6
-		self.boutons[6][5] = self.ids.bouton_6_7
-
+        self.boutons[6][5] = self.ids.bouton_6_7
 
         event = Clock.schedule_interval(self.joue_machine, 2)
 
     def initialisation(self):
         # Reinitialisation de la grille
-   		# We construct our table with empty cases 
-    	for x in range(BOARDWIDTH):
-        	self.board.append([' '] * BOARDHEIGHT)
+            # We construct our table with empty cases
         for x in range(BOARDWIDTH):
-        	self.boutons.append([0] * BOARDHEIGHT) 	
+            self.board.append([' '] * BOARDHEIGHT)
+        for x in range(BOARDWIDTH):
+            self.boutons.append([0] * BOARDHEIGHT)
 
         #self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
         for item in self.boutons:
@@ -289,13 +288,13 @@ class Interface(BoxLayout):
             self.a_qui_le_tour = "croix"
             self.ids.message.text = "C'est toi qui commence ..."
 
-    def joue_machine(self,t):
-        ### Joue au hasard
+    def joue_machine(self, t):
+        # Joue au hasard
         if self.a_qui_le_tour == "rond" and self.jeu_en_cours:
             fini = False
-            while not fini :
-                ligne = randint(0,5)
-                colonne = randint(0,6)
+            while not fini:
+                ligne = randint(0, 5)
+                colonne = randint(0, 6)
                 if self.grille[colonne][ligne] == "vide":
                     self.grille[colonne][ligne] = "rond"
                     self.boutons[colonne][ligne].background_normal = "images/rond.png"
@@ -306,9 +305,9 @@ class Interface(BoxLayout):
 
     def joue(self, wid, x, y):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
-            if self.grille[y-1][x-1] == "vide":
+            if self.grille[y - 1][x - 1] == "vide":
                 wid.background_normal = "images/croix.png"
-                self.grille[y-1][x-1] = "croix"
+                self.grille[y - 1][x - 1] = "croix"
                 self.a_qui_le_tour = "rond"
                 self.verifie_gagne()
 
@@ -316,30 +315,30 @@ class Interface(BoxLayout):
         gagne = False
         gagnant = None
         # Verifications horizontales
-        if self.grille[0][0] == self.grille[0][1] and  self.grille[0][0] == self.grille[0][2] and  self.grille[0][0] != "vide":
+        if self.grille[0][0] == self.grille[0][1] and self.grille[0][0] == self.grille[0][2] and self.grille[0][0] != "vide":
             gagnant = self.grille[0][0]
             gagne = True
-        elif self.grille[1][0] == self.grille[1][1] and  self.grille[1][0] == self.grille[1][2] and  self.grille[1][0] != "vide":
+        elif self.grille[1][0] == self.grille[1][1] and self.grille[1][0] == self.grille[1][2] and self.grille[1][0] != "vide":
             gagnant = self.grille[1][0]
             gagne = True
-        elif self.grille[2][0] == self.grille[2][1] and  self.grille[2][0] == self.grille[2][2] and  self.grille[2][0] != "vide":
+        elif self.grille[2][0] == self.grille[2][1] and self.grille[2][0] == self.grille[2][2] and self.grille[2][0] != "vide":
             gagnant = self.grille[2][0]
             gagne = True
         # Verifications verticales
-        elif self.grille[0][0] == self.grille[1][0] and self.grille[0][0] == self.grille[2][0] and  self.grille[0][0] != "vide":
+        elif self.grille[0][0] == self.grille[1][0] and self.grille[0][0] == self.grille[2][0] and self.grille[0][0] != "vide":
             gagnant = self.grille[0][0]
             gagne = True
-        elif self.grille[0][1] == self.grille[1][1] and self.grille[0][1] == self.grille[2][1] and  self.grille[0][1] != "vide":
+        elif self.grille[0][1] == self.grille[1][1] and self.grille[0][1] == self.grille[2][1] and self.grille[0][1] != "vide":
             gagnant = self.grille[0][1]
             gagne = True
-        elif self.grille[0][2] == self.grille[1][2] and self.grille[0][2] == self.grille[2][2] and  self.grille[0][2] != "vide":
+        elif self.grille[0][2] == self.grille[1][2] and self.grille[0][2] == self.grille[2][2] and self.grille[0][2] != "vide":
             gagnant = self.grille[0][2]
             gagne = True
         # Verifications diagonales
-        elif self.grille[0][0] == self.grille[1][1] and self.grille[0][0] == self.grille[2][2] and  self.grille[0][0] != "vide":
+        elif self.grille[0][0] == self.grille[1][1] and self.grille[0][0] == self.grille[2][2] and self.grille[0][0] != "vide":
             gagnant = self.grille[0][0]
             gagne = True
-        elif self.grille[0][2] == self.grille[1][1] and self.grille[0][2] == self.grille[2][0] and  self.grille[0][2] != "vide":
+        elif self.grille[0][2] == self.grille[1][1] and self.grille[0][2] == self.grille[2][0] and self.grille[0][2] != "vide":
             gagnant = self.grille[0][2]
             gagne = True
         if gagne:
@@ -355,5 +354,6 @@ class Morpion(App):
 
     def build(self):
         return Interface()
+
 
 Morpion().run()
