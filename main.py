@@ -203,7 +203,7 @@ class Interface(BoxLayout):
         self.BOARDHEIGHT = 6
         self.ROND = "images/rond.png"
         self.CROIX = "images/croix.png"
-        #grille = [['vide', 'vide', 'vide'] for k in range(4)]
+        #board = [['vide', 'vide', 'vide'] for k in range(4)]
         self.board = []
         self.boutons = []
 
@@ -211,7 +211,7 @@ class Interface(BoxLayout):
         self.jeu_en_cours = False
         self.a_qui_le_tour = ""
 
-        # Reinitialisation de la grille
+        # Reinitialisation de la board
         # We construct our table with empty cases
         for x in range(self.BOARDWIDTH):
     	     self.board.append([' '] * self.BOARDHEIGHT)
@@ -271,7 +271,7 @@ class Interface(BoxLayout):
 
     def initialisation(self):
 
-        #self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
+        #self.board = [['vide', 'vide', 'vide'] for k in range(4)]
         for item in self.boutons:
             for b in item:
                 b.background_normal = "images/orange.png"
@@ -296,8 +296,8 @@ class Interface(BoxLayout):
             while not fini:
                 ligne = randint(0, 5)
                 colonne = randint(0, 6)
-                if self.grille[colonne][ligne] == "vide":
-                    self.grille[colonne][ligne] = "rond"
+                if self.board[colonne][ligne] == "vide":
+                    self.board[colonne][ligne] = "rond"
                     self.boutons[colonne][ligne].background_normal = "images/rond.png"
                     fini = True
             if not self.verifie_gagne():
@@ -306,9 +306,9 @@ class Interface(BoxLayout):
 
     def joue(self, wid, x, y):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
-            if self.grille[y - 1][x - 1] == "vide":
+            if self.board[y - 1][x - 1] == "vide":
                 wid.background_normal = "images/croix.png"
-                self.grille[y - 1][x - 1] = "croix"
+                self.board[y - 1][x - 1] = "croix"
                 self.a_qui_le_tour = "rond"
                 self.verifie_gagne()
 
@@ -316,31 +316,31 @@ class Interface(BoxLayout):
         gagne = False
         gagnant = None
         # Verifications horizontales
-        if self.grille[0][0] == self.grille[0][1] and self.grille[0][0] == self.grille[0][2] and self.grille[0][0] != "vide":
-            gagnant = self.grille[0][0]
+        if self.board[0][0] == self.board[0][1] and self.board[0][0] == self.board[0][2] and self.board[0][0] != "vide":
+            gagnant = self.board[0][0]
             gagne = True
-        elif self.grille[1][0] == self.grille[1][1] and self.grille[1][0] == self.grille[1][2] and self.grille[1][0] != "vide":
-            gagnant = self.grille[1][0]
+        elif self.board[1][0] == self.board[1][1] and self.board[1][0] == self.board[1][2] and self.board[1][0] != "vide":
+            gagnant = self.board[1][0]
             gagne = True
-        elif self.grille[2][0] == self.grille[2][1] and self.grille[2][0] == self.grille[2][2] and self.grille[2][0] != "vide":
-            gagnant = self.grille[2][0]
+        elif self.board[2][0] == self.board[2][1] and self.board[2][0] == self.board[2][2] and self.board[2][0] != "vide":
+            gagnant = self.board[2][0]
             gagne = True
         # Verifications verticales
-        elif self.grille[0][0] == self.grille[1][0] and self.grille[0][0] == self.grille[2][0] and self.grille[0][0] != "vide":
-            gagnant = self.grille[0][0]
+        elif self.board[0][0] == self.board[1][0] and self.board[0][0] == self.board[2][0] and self.board[0][0] != "vide":
+            gagnant = self.board[0][0]
             gagne = True
-        elif self.grille[0][1] == self.grille[1][1] and self.grille[0][1] == self.grille[2][1] and self.grille[0][1] != "vide":
-            gagnant = self.grille[0][1]
+        elif self.board[0][1] == self.board[1][1] and self.board[0][1] == self.board[2][1] and self.board[0][1] != "vide":
+            gagnant = self.board[0][1]
             gagne = True
-        elif self.grille[0][2] == self.grille[1][2] and self.grille[0][2] == self.grille[2][2] and self.grille[0][2] != "vide":
-            gagnant = self.grille[0][2]
+        elif self.board[0][2] == self.board[1][2] and self.board[0][2] == self.board[2][2] and self.board[0][2] != "vide":
+            gagnant = self.board[0][2]
             gagne = True
         # Verifications diagonales
-        elif self.grille[0][0] == self.grille[1][1] and self.grille[0][0] == self.grille[2][2] and self.grille[0][0] != "vide":
-            gagnant = self.grille[0][0]
+        elif self.board[0][0] == self.board[1][1] and self.board[0][0] == self.board[2][2] and self.board[0][0] != "vide":
+            gagnant = self.board[0][0]
             gagne = True
-        elif self.grille[0][2] == self.grille[1][1] and self.grille[0][2] == self.grille[2][0] and self.grille[0][2] != "vide":
-            gagnant = self.grille[0][2]
+        elif self.board[0][2] == self.board[1][1] and self.board[0][2] == self.board[2][0] and self.board[0][2] != "vide":
+            gagnant = self.board[0][2]
             gagne = True
         if gagne:
             self.jeu_en_cours = False
