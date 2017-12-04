@@ -210,7 +210,7 @@ interface = Builder.load_string('''
                 id: prenom
                 size_hint_y: 0.75
                 color: [1,1,1,1]
-                text: "prenom
+                text: "prenom"
                 font_size: max(self.height, self.width) / 8
                 text_size: self.width, None
                 halign: 'right'
