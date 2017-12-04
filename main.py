@@ -207,16 +207,16 @@ class Interface(BoxLayout):
         self.bord = []
         self.boutons = []
 
-    qui_commence = randint(0, 1)
-    jeu_en_cours = False
-    a_qui_le_tour = ""
+        qui_commence = randint(0, 1)
+        jeu_en_cours = False
+        a_qui_le_tour = ""
 
-    # Reinitialisation de la grille
-    # We construct our table with empty cases
+        # Reinitialisation de la grille
+        # We construct our table with empty cases
         for x in range(self.BOARDWIDTH):
-            self.board.append([' '] * self.BOARDHEIGHT)
+    	     self.board.append([' '] * self.BOARDHEIGHT)
         for x in range(self.BOARDWIDTH):
-            self.boutons.append([0] * self.BOARDHEIGHT)
+             self.boutons.append([0] * self.BOARDHEIGHT)
 
         # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
