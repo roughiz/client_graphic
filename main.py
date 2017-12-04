@@ -211,6 +211,14 @@ class Interface(BoxLayout):
     def __init__(self):
         super(Interface, self).__init__()
         self.ids.message.text = ""
+
+        # Reinitialisation de la grille
+        # We construct our table with empty cases
+        for x in range(BOARDWIDTH):
+            self.board.append([' '] * BOARDHEIGHT)
+        for x in range(BOARDWIDTH):
+            self.boutons.append([0] * BOARDHEIGHT)
+
         # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
         self.boutons[1][0] = self.ids.bouton_1_2
@@ -263,12 +271,6 @@ class Interface(BoxLayout):
         event = Clock.schedule_interval(self.joue_machine, 2)
 
     def initialisation(self):
-        # Reinitialisation de la grille
-            # We construct our table with empty cases
-        for x in range(BOARDWIDTH):
-            self.board.append([' '] * BOARDHEIGHT)
-        for x in range(BOARDWIDTH):
-            self.boutons.append([0] * BOARDHEIGHT)
 
         #self.grille = [['vide', 'vide', 'vide'] for k in range(4)]
         for item in self.boutons:
