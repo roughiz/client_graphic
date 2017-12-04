@@ -196,11 +196,10 @@ interface=Builder.load_string('''
 
 class Interface(BoxLayout):
 
-	BOARDWIDTH = 7
-	BOARDHEIGHT = 6
-	ROND = "images/rond.png"
-	CROIX = "images/croix.png"
-
+    BOARDWIDTH = 7
+    BOARDHEIGHT = 6
+    ROND = "images/rond.png"
+    CROIX = "images/croix.png"
     #grille = [['vide', 'vide', 'vide'] for k in range(4)]
     bord = []
     boutons = []
