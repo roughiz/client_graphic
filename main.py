@@ -307,7 +307,7 @@ class Interface(BoxLayout):
     def joue(self, wid, x, y):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
             if self.board[y - 1][x - 1] == " ":
-            	print("ligne"+x+"colonne:"+y)
+            	print("ligne"+str(x)+"colonne:"+str(y))
                 wid.background_normal = "images/croix.png"
                 self.board[y - 1][x - 1] = "croix"
                 self.a_qui_le_tour = "rond"
