@@ -185,6 +185,36 @@ interface = Builder.load_string('''
                 text_size: self.width, None
                 halign: 'center'
                 valign: 'middle'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.56, 0.09, 0.7, 1 #violet
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                id: nom
+                size_hint_y: 0.75
+                color: [1,1,1,1]
+                text: "nom"
+                font_size: max(self.height, self.width) / 8
+                text_size: self.width, None
+                halign: 'left'
+                valign: 'middle'  
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.56, 0.09, 0.7, 1 #violet
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                id: prenom
+                size_hint_y: 0.75
+                color: [1,1,1,1]
+                text: "prenom
+                font_size: max(self.height, self.width) / 8
+                text_size: self.width, None
+                halign: 'right'
+                valign: 'middle'      
             Button:
                 background_normal: "images/violet_clair.png"
                 text: 'Nouveau jeu'
