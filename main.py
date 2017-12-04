@@ -185,24 +185,24 @@ interface = Builder.load_string('''
                 text_size: self.width, None
                 halign: 'center'
                 valign: 'middle'
-        BoxLayout:
-            canvas.before:
+            BoxLayout:
+                canvas.before:
                 Color:
-                    rgba: 63, 63, 191, 1 #fuschia
+                    rgba: 0, 0, 1, 1 #fuschia
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            orientation: 'vertical'
-            padding: 2
-            spacing: 2        
-            TextInput:
-                id: login
-                #text: root.textinputtext
-                text: "login"
-            TextInput:
-                id: pass
-                #text: root.textinputtext
-                text: "pass"
+                orientation: 'vertical'
+                padding: 2
+                spacing: 2        
+                TextInput:
+                    id: login
+                    #text: root.textinputtext
+                    text: "login"
+                TextInput:
+                    id: pass
+                    #text: root.textinputtext
+                    text: "pass"    
             Button:
                 background_normal: "images/violet_clair.png"
                 text: 'Nouveau jeu'
