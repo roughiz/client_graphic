@@ -185,6 +185,16 @@ interface = Builder.load_string('''
                 text_size: self.width, None
                 halign: 'center'
                 valign: 'middle'
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 63, 63, 191, 1 #fuschia
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: 'vertical'
+            padding: 2
+            spacing: 2        
             TextInput:
                 id: login
                 #text: root.textinputtext
