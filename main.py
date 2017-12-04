@@ -207,9 +207,9 @@ class Interface(BoxLayout):
         self.board = []
         self.boutons = []
 
-        qui_commence = randint(0, 1)
-        jeu_en_cours = False
-        a_qui_le_tour = ""
+        self.qui_commence = randint(0, 1)
+        self.jeu_en_cours = False
+        self.a_qui_le_tour = ""
 
         # Reinitialisation de la grille
         # We construct our table with empty cases
