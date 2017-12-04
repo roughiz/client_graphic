@@ -188,12 +188,13 @@ interface = Builder.load_string('''
                 id: login
                 #text: root.textinputtext
                 hint_text: "login"
+                size_hint_y: 0.2
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             TextInput:
                 id: pass
                 #text: root.textinputtext
                 hint_text: "password"   
-                password : True 
+                password : "True"
 
             Button:
                 background_normal: "images/violet_clair.png"
