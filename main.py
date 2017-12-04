@@ -31,8 +31,8 @@ interface = Builder.load_string('''
                     size: self.size
             rows: 6
             cols: 7
-            spacing: 4
-            padding: 4
+            spacing: 5
+            padding: 5
             Bouton:
                 id: bouton_1_1
                 on_press: root.joue(self, 1, 1)
@@ -159,6 +159,23 @@ interface = Builder.load_string('''
             Bouton:
                 id: bouton_6_7
                 on_press: root.joue(self, 6, 7)
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: 0, 1, 0, 1 #fuschia
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: 'horizontal'
+            padding: 2  
+            TextInput:
+                id: login2
+                #text: root.textinputtext
+                text: "login"
+            TextInput:
+                id: pass3
+                #text: root.textinputtext
+                text: "pass"    
 
         BoxLayout:
             canvas.before:
