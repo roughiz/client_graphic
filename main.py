@@ -194,7 +194,7 @@ interface = Builder.load_string('''
                 id: pass
                 #text: root.textinputtext
                 hint_text: "password"   
-                password : "True"
+                #password : "True"
 
             Button:
                 background_normal: "images/violet_clair.png"
