@@ -1,4 +1,3 @@
-# Jeu de morpion
 
 from kivy.lang import Builder
 from kivy.app import App
