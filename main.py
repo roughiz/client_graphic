@@ -4,7 +4,9 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 from random import randint
-
+from stream import Stream
+from room import Room
+from user import User
 
 interface = Builder.load_string('''
 <Bouton@Button>:
@@ -28,136 +30,116 @@ interface = Builder.load_string('''
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            rows: 6
+            rows: 7
             cols: 7
             spacing: 5
             padding: 5
             Bouton:
                 id: bouton_1_1
-                on_press: root.joue(self, 1, 1)
             Bouton:
                 id: bouton_1_2
-                on_press: root.joue(self, 1, 2)
             Bouton:
                 id: bouton_1_3
-                on_press: root.joue(self, 1, 3)
             Bouton:
                 id: bouton_1_4
-                on_press: root.joue(self, 1, 4)
             Bouton:
                 id: bouton_1_5
-                on_press: root.joue(self, 1, 5)
             Bouton:
-                id: bouton_1_6
-                on_press: root.joue(self, 1, 6)                
+                id: bouton_1_6              
             Bouton:
                 id: bouton_1_7
-                on_press: root.joue(self, 1, 7)
 			Bouton:
                 id: bouton_2_1
-                on_press: root.joue(self, 2, 1)
             Bouton:
                 id: bouton_2_2
-                on_press: root.joue(self, 2, 2)
             Bouton:
                 id: bouton_2_3
-                on_press: root.joue(self, 2, 3)
             Bouton:
                 id: bouton_2_4
-                on_press: root.joue(self, 2, 4)
             Bouton:
                 id: bouton_2_5
-                on_press: root.joue(self, 2, 5)
             Bouton:
-                id: bouton_2_6
-                on_press: root.joue(self, 2, 6)                
+                id: bouton_2_6               
             Bouton:
                 id: bouton_2_7
-                on_press: root.joue(self, 2, 7)
             Bouton:
                 id: bouton_3_1
-                on_press: root.joue(self, 3, 1)
             Bouton:
                 id: bouton_3_2
-                on_press: root.joue(self, 3, 2)
             Bouton:
                 id: bouton_3_3
-                on_press: root.joue(self, 3, 3)
             Bouton:
                 id: bouton_3_4
-                on_press: root.joue(self, 3, 4)
             Bouton:
                 id: bouton_3_5
-                on_press: root.joue(self, 3, 5)
             Bouton:
-                id: bouton_3_6
-                on_press: root.joue(self, 3, 6)                
+                id: bouton_3_6              
             Bouton:
                 id: bouton_3_7
-                on_press: root.joue(self, 3, 7)
             Bouton:
                 id: bouton_4_1
-                on_press: root.joue(self, 4, 1)
             Bouton:
                 id: bouton_4_2
-                on_press: root.joue(self, 4, 2)
             Bouton:
                 id: bouton_4_3
-                on_press: root.joue(self, 4, 3)
             Bouton:
                 id: bouton_4_4
-                on_press: root.joue(self, 4, 4)
             Bouton:
                 id: bouton_4_5
-                on_press: root.joue(self, 4, 5)
             Bouton:
-                id: bouton_4_6
-                on_press: root.joue(self, 4, 6)                
+                id: bouton_4_6               
             Bouton:
                 id: bouton_4_7
-                on_press: root.joue(self, 4, 7)
             Bouton:
                 id: bouton_5_1
-                on_press: root.joue(self, 5, 1)
             Bouton:
                 id: bouton_5_2
-                on_press: root.joue(self, 5, 2)
             Bouton:
                 id: bouton_5_3
-                on_press: root.joue(self, 5, 3)
             Bouton:
                 id: bouton_5_4
-                on_press: root.joue(self, 5, 4)
             Bouton:
                 id: bouton_5_5
-                on_press: root.joue(self, 5, 5)
             Bouton:
-                id: bouton_5_6
-                on_press: root.joue(self, 5, 6)                
+                id: bouton_5_6              
             Bouton:
                 id: bouton_5_7
-                on_press: root.joue(self, 5, 7)
             Bouton:
                 id: bouton_6_1
-                on_press: root.joue(self, 6, 1)
             Bouton:
                 id: bouton_6_2
-                on_press: root.joue(self, 6, 2)
             Bouton:
                 id: bouton_6_3
-                on_press: root.joue(self, 6, 3)
             Bouton:
                 id: bouton_6_4
-                on_press: root.joue(self, 6, 4)
             Bouton:
                 id: bouton_6_5
-                on_press: root.joue(self, 6, 5)
             Bouton:
-                id: bouton_6_6
-                on_press: root.joue(self, 6, 6)                
+                id: bouton_6_6               
             Bouton:
                 id: bouton_6_7
-                on_press: root.joue(self, 6, 7)
+
+            Bouton:
+                id: bouton_7_1
+                on_press: root.joue(self, 0)
+            Bouton:
+                id: bouton_7_2
+                on_press: root.joue(self, 1)
+            Bouton:
+                id: bouton_7_3
+                on_press: root.joue(self, 2)
+            Bouton:
+                id: bouton_7_4
+                on_press: root.joue(self, 3)
+            Bouton:
+                id: bouton_7_5
+                on_press: root.joue(self, 4)
+            Bouton:
+                id: bouton_7_6
+                on_press: root.joue(self, 5)               
+            Bouton:
+                id: bouton_7_7
+                on_press: root.joue(self, 6)
         BoxLayout:
             canvas.before:
                 Color:
@@ -178,7 +160,7 @@ interface = Builder.load_string('''
                 id: message
                 size_hint_y: 0.75
                 color: [1,1,1,1]
-                text: "A toi de jouer ..."
+                text: "Authentifiez vous pour jouer .."
                 font_size: max(self.height, self.width) / 8
                 text_size: self.width, None
                 halign: 'center'
@@ -190,17 +172,17 @@ interface = Builder.load_string('''
                 size_hint_y: 0.2
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             TextInput:
-                id: pass
+                id: password
                 #text: root.textinputtext
                 hint_text: "password"   
                 #password : "True"
 
             Button:
                 background_normal: "images/violet_clair.png"
-                text: 'Nouveau jeu'
+                text: 'Jouer'
                 font_size: max(self.height, self.width) / 8
                 size_hint_y: 0.25
-                on_press: root.start_game()
+                on_press: root.authentication()
 ''')
 
 
@@ -209,16 +191,23 @@ class Interface(BoxLayout):
     def __init__(self):
         super(Interface, self).__init__()
         
+        self.IP = '212.47.247.190'
+        self.PORT = 4444
         self.BOARDWIDTH = 7
         self.BOARDHEIGHT = 6
         self.ROND = "images/rond.png"
         self.CROIX = "images/croix.png"
+        self.EGAL = "images/egal.png"
         self.board = []
         self.boutons = []
         self.ids.message.text = ""
         self.qui_commence = randint(0, 1)
         self.jeu_en_cours = False
         self.a_qui_le_tour = ""
+        self.push_boutns=[]
+        self.user = None
+        self.room = None
+        self.stream = None
 
 
         # Initialisation
@@ -229,19 +218,22 @@ class Interface(BoxLayout):
         event = Clock.schedule_interval(self.joue_machine, 2)
 
     def initialisation(self):
-
-    	self.qui_commence = randint(0, 1)
+        self.qui_commence = randint(0, 1)
         self.jeu_en_cours = False
         self.a_qui_le_tour = ""
         self.ids.message.text = ""
-    	self.board = []
+        self.board = []
         self.boutons = []
+        self.push_boutns=[]
         # Reinitialisation de la board
         # We construct our table with empty cases
         for x in range(self.BOARDWIDTH):
     	     self.board.append([' '] * self.BOARDHEIGHT)
         for x in range(self.BOARDWIDTH):
              self.boutons.append([0] * self.BOARDHEIGHT)
+        for x in range(self.BOARDWIDTH):
+        	 self.push_boutns.append(0)
+
         # self.boutons[colonne][ligne]
         self.boutons[0][0] = self.ids.bouton_1_1
         self.boutons[1][0] = self.ids.bouton_1_2
@@ -291,6 +283,16 @@ class Interface(BoxLayout):
         self.boutons[5][5] = self.ids.bouton_6_6
         self.boutons[6][5] = self.ids.bouton_6_7
 
+        self.push_boutns[0] = self.ids.bouton_7_1
+        self.push_boutns[1] = self.ids.bouton_7_2
+        self.push_boutns[2] = self.ids.bouton_7_3
+        self.push_boutns[3] = self.ids.bouton_7_4
+        self.push_boutns[4] = self.ids.bouton_7_5
+        self.push_boutns[5] = self.ids.bouton_7_6
+        self.push_boutns[6] = self.ids.bouton_7_7
+        ## Mise en place du background-image  pour les boutons push
+        for item in self.push_boutns:
+                item.background_normal = "images/3.jpeg"
     def start_game(self):
 
         self.initialisation()
@@ -312,6 +314,33 @@ class Interface(BoxLayout):
             self.a_qui_le_tour = "croix"
             self.ids.message.text = "C'est toi qui commence ..."
 
+    def authentication(self):
+        self.user = User(self.ids.login.text,self.ids.password.text)
+        self.stream =  Stream(self.IP, self.PORT, self.user)
+        self.stream.connect_to_server()
+        self.stream.negociate_version('1.0')
+        self.stream.login()
+        if self.stream.isAuthentified :
+            print("yes")
+            self.stream.create_room()
+            self.stream.join_room(self.stream.user.roomId)
+            self.ids.message.text = "Authentification reussie"
+            self.ids.password.text = ""
+            self.ids.login.text = ""
+            self.stream.getSock().close()
+
+        '''
+        if "SUCCESS:AUTHENTICATED" in str(self.stream.login()):
+            prin("yes")
+            self.stream.create_room()
+            self.stream.join_room(self.stream.user.roomId)
+            self.ids.message.text = "Authentification reussie"
+            self.ids.password.text = ""
+            self.ids.login.text = ""
+            self.stream.getSock().close()
+            '''
+
+
     def joue_machine(self, t):
         # Joue au hasard
         if self.a_qui_le_tour == "rond" and self.jeu_en_cours:
@@ -327,14 +356,30 @@ class Interface(BoxLayout):
                 self.a_qui_le_tour = "croix"
                 self.ids.message.text = "C'est ton tour ..."
 
-    def joue(self, wid, x, y):
+    def joue(self, wid, move):
         if self.jeu_en_cours and self.a_qui_le_tour == "croix":
-            if self.board[y - 1][x - 1] == " ":
-            	print("ligne"+str(x)+"colonne:"+str(y))
-                wid.background_normal = "images/croix.png"
-                self.board[y - 1][x - 1] = "croix"
+            
+            if self.isValidMove(self.board,move):
+                self.makeMove(self.board, self.boutons, "croix","images/croix.png", move)
                 self.a_qui_le_tour = "rond"
                 self.verifie_gagne()
+
+    def makeMove(self,board, boutons, player, player_flag, column):
+    # this function parse column x choosen by user and put it at the first empty column, the loop parse from the head to the bottom
+	    for y in range(self.BOARDHEIGHT-1, -1, -1):
+		    if board[column][y] == ' ':
+			    board[column][y] = player
+			    boutons[column][y].background_normal = player_flag
+			    return
+
+    def isValidMove(self,board, move):
+		    # This function verify if the move input is in the interval [0-width] and the head of column table is not emty else return false
+        if move < 0 or move >= (self.BOARDWIDTH):
+              return False
+
+        if board[move][0] != ' ':
+              return False
+        return True            
 
     def verifie_gagne(self):
         gagne = False
